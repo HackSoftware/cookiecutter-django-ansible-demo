@@ -1,0 +1,8 @@
+[all:vars]
+env=production
+
+[webservers]
+hacksoft.io
+
+[dbservers]
+hacksoft.io

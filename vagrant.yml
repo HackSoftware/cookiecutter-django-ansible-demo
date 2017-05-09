@@ -1,0 +1,14 @@
+- name: Create a {{ application_name }} virtual machine via vagrant
+  hosts: all
+  become: yes
+  become_user: root
+  remote_user: vagrant
+  vars_files:
+    - ansible_vars/base.yml
+    - ansible_vars/staging.yml
+
+  roles:
+    - nginx
+    - ANXS.postgresql
+    - base
+    - application

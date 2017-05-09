@@ -1,0 +1,11 @@
+---
+- name: Deploy application
+  hosts: webservers
+  remote_user: hack
+
+vars_files:
+    - ansible_vars/base.yml
+    - ansible_vars/{{ env }}.yml
+
+  roles:
+    - carlosbuenosvinos.ansistrano-deploy

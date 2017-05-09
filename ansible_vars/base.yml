@@ -1,0 +1,39 @@
+---
+application_name: 'hacksoft'
+application_root: '/hack/hacksoft/'
+application_user: 'hack'
+
+postgresql_version: 9.3
+postgresql_encoding: 'UTF-8'
+postgresql_locale: 'en_US.UTF-8'
+postgresql_cluster_name: 'main'
+postgresql_app_user_password: '^r3!a)-b3)!uyvi9(8)d'
+
+
+postgresql_databases:
+  - name: '{{ application_name }}' 
+
+postgresql_users:
+  - name: '{{ application_name }}'
+    pass: '{{ postgresql_app_user_password }}'
+
+postgresql_user_privileges:
+  - name: '{{ application_name }}'
+    db: '{{ application_name }}'
+
+
+letsencrypt_webroot_path: '/var/www/html'
+letsencrypt_email: 'support@hacksoft.io'
+letsencrypt_renewal_command_args: '--renew-hook "systemctl restart nginx"'
+
+# Ansistrano deploy settings
+ansistrano_git_repo: 'https://github.com/HackSoftware/hacksoft.io' # Location of the git repository
+
+ansistrano_deploy_via: "git"
+ansistrano_keep_releases: 5
+ansistrano_deploy_to: '{{ application_root }}'
+ansistrano_git_identity_key_path: '~/.ssh/id_rsa'
+ansistrano_shared_paths: ['media', 'staticfiles']
+ansistrano_shared_files: []
+ansistrano_after_cleanup_tasks_file: "{{ playbook_dir }}/deploy_tasks/after-cleanup.yml"
+

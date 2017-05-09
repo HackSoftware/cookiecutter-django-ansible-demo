@@ -1,0 +1,8 @@
+[all:vars]
+env=staging
+
+[webservers]
+staging.hacksoft.io
+
+[dbservers]
+staging.hacksoft.io
